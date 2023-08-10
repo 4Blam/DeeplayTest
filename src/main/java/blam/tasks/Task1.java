@@ -8,7 +8,6 @@ public class Task1 implements Solvable {
     private int[] array;
     public Task1(){
         this.N = 5 + (int) (Math.random() * 96);
-        //this.N = 10;
         this.array = new int[N];
     }
     //Заполняем масссив случайными целыми числами в диапазоне [-N/2;N/2]
@@ -31,7 +30,7 @@ public class Task1 implements Solvable {
         for(int i = 0; i < N-1; i++){
             System.out.print(array[i] + ", ");
         }
-        System.out.print(array[N-1] + "]");
+        System.out.println(array[N-1] + "]");
     }
     private void swap(int index1, int index2){
         int tmp = array[index1];
