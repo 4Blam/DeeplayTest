@@ -12,12 +12,22 @@ public class Solver {
         System.out.println("\nКОНЕЦ РЕШЕНИЯ ЗАДАЧИ 1");
     }
     public static void demonstrateTask2(){
+        System.out.println("\nНАЧАЛО РЕШЕНИЯ ЗАДАЧИ 2");
         Task2 task2 = new Task2();
         task2.solve();
+        System.out.println("\n\nКОНЕЦ РЕШЕНИЯ ЗАДАЧИ 2");
     }
+    //Задача 3 со случайной генерацией
+    public static void demonstrateRandomlyGeneratedTask3(){
+        System.out.println("\nНАЧАЛО РЕШЕНИЯ ЗАДАЧИ 3\n");
+        Task3 task3 = new Task3();
+        task3.solve();
+        System.out.println("\nКОНЕЦ РЕШЕНИЯ ЗАДАЧИ 3");
+    }
+    //Задача 3 с ручным вводом
     public static void demonstrateTask3(){
         System.out.println("\nНАЧАЛО РЕШЕНИЯ ЗАДАЧИ 3\n");
-        int N = 0;
+        int N;
         int[] firstCombination = new int[3];
         int[] secondCombination = new int[3];
 
@@ -59,10 +69,12 @@ public class Solver {
 
         Task3 task3 = new Task3(N, firstCombination, secondCombination);
 
-        long time = System.currentTimeMillis();
         task3.solve();
-        System.out.println(System.currentTimeMillis() - time);
 
+        scanner.close();
         System.out.println("\nКОНЕЦ РЕШЕНИЯ ЗАДАЧИ 3");
+    }
+    public static void demonstrateTask4(){
+
     }
 }

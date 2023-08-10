@@ -1,13 +1,17 @@
 package blam.tasks;
 
-import java.util.Arrays;
-
 public class Task1 implements Solvable {
-    //Размер массива - случайное число от 5 до 100
+    //Размер массива
     private final int N;
-    private int[] array;
+    private final int[] array;
+    //Для случайной генерации размера массива
     public Task1(){
         this.N = 5 + (int) (Math.random() * 96);
+        this.array = new int[N];
+    }
+    //Для ручного ввода размера массива
+    public Task1(int N){
+        this.N = N;
         this.array = new int[N];
     }
     //Заполняем масссив случайными целыми числами в диапазоне [-N/2;N/2]
@@ -37,32 +41,36 @@ public class Task1 implements Solvable {
         array[index1] = array[index2];
         array[index2] = tmp;
     }
-    private void quickSort(int low, int high, boolean ascendingOrder) {
-        //завершить,если массив пуст или уже нечего делить
-        if (low >= high) return;
+    //Реализация схемы Хоара
+    private void quickSort(int left, int right, boolean ascendingOrder) {
+        if (left >= right) return;
 
-        //выбираем опорный элемент
-        int middle = low + (high - low) / 2;
-        int border = array[middle];
+        //Вычисляем опорный элемент
+        int mid = left + (right - left) / 2;
+        int coreElem = array[mid];
 
-        //разделияем на подмассивы и меняем местами
-        int i = low, j = high;
+        //Теперь делим на подмассивы и меняем местами
+        int i = left, j = right;
         while (i <= j) {
             if(ascendingOrder) {
-                while (array[i] < border) i++;
-                while (array[j] > border) j--;
+                while (array[i] < coreElem) i++;
+                while (array[j] > coreElem) j--;
             } else{
-                while (array[i] > border) i++;
-                while (array[j] < border) j--;
+                while (array[i] > coreElem) i++;
+                while (array[j] < coreElem) j--;
             }
             if (i <= j) {
                 swap(i++,j--);
             }
         }
 
-        //рекурсия для сортировки левой и правой части
-        if (low < j) quickSort(low, j, ascendingOrder);
-        if (high > i) quickSort(i, high, ascendingOrder);
+        //Рекурсивный вызов для левой и правой части
+        if (left < j) {
+            quickSort(left, j, ascendingOrder);
+        }
+        if (right > i) {
+            quickSort(i, right, ascendingOrder);
+        }
     }
     @Override
     public void solve(){
@@ -87,7 +95,7 @@ public class Task1 implements Solvable {
             swap(zeroInd, evenInd--);
         }
 
-        //Шаг 2(сортировка частей): Применим быструю сортировку к частям разделенного массива
+        //Шаг 2(сортировка частей): Применим быструю сортировку(схема Хоара) к частям разделенного массива
         //По возрастанию нечетные
         //По убыванию четные
         quickSort(0, oddInd-1, true);

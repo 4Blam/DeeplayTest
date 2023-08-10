@@ -5,10 +5,20 @@ import java.util.HashMap;
 public class Task2 implements Solvable{
     //Размер массива - случайное число от 5 до 100
     private final int N;
-    private int[] array;
+    private final int[] array;
     public Task2(){
         this.N = 5 + (int) (Math.random() * 96);
         this.array = new int[N];
+        fillArray();
+    }
+    public Task2(int N){
+        this.N = N;
+        this.array = new int[N];
+        fillArray();
+    }
+    public Task2(int[] array){
+        this.N = array.length;
+        this.array = array;
     }
     //Заполняем масссив случайными целыми числами в диапазоне [0; sqrt(N) (округленное вниз)]
     private void fillArray(){
@@ -26,7 +36,6 @@ public class Task2 implements Solvable{
     }
     @Override
     public void solve() {
-        fillArray();
         printArray();
         //Для общности можно было оставить размер пустым (на случай если числа помещенные в массив неограничены),
         // однако в конкретно этой задаче(моей интерпретации),
