@@ -5,6 +5,6 @@ public class Main {
         //Solver.demonstrateTask2();
         //Solver.demonstrateTask3();
         //Solver.demonstrateRandomlyGeneratedTask3();
-        Solver.demonstrateTask4();
+        //Solver.demonstrateTask4();
     }
 }

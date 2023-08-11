@@ -76,7 +76,22 @@ public class Solver {
         System.out.println("\nКОНЕЦ РЕШЕНИЯ ЗАДАЧИ 3");
     }
     public static void demonstrateTask4(){
-        Task4 task4 = new Task4();
+        System.out.println("\nНАЧАЛО РЕШЕНИЯ ЗАДАЧИ 4\n");
+
+        System.out.println("Введите массив через пробел");
+        Scanner scanner = new Scanner(System.in);
+        String arrayAsString = scanner.nextLine();
+        String[] arrayString = arrayAsString.split(" ");
+
+        int[] array = new int[arrayString.length];
+        for(int i = 0; i < arrayString.length; i++){
+            array[i] = Integer.parseInt(arrayString[i]);
+        }
+        System.out.println("Введите количество частей");
+        int K = scanner.nextInt();
+
+        Task4 task4 = new Task4(array, K);
         task4.solve();
+        System.out.println("\nКОНЕЦ РЕШЕНИЯ ЗАДАЧИ 4\n");
     }
 }

@@ -17,6 +17,12 @@ public class Task4 implements Solvable{
         this.N = this.array.length;
         this.answer = new Vector<>(N);
     }
+    public Task4(int[] array, int K){
+        this.K = K;
+        this.array = array;
+        this.N = array.length;
+        this.answer = new Vector<>(N);
+    }
     void findAllSubsets(ArrayList<Integer> arrayList, Vector<Integer> answer, int sum, int step){
         if((sum == 0) && (step == K-1) && (arrayList.size() == 0)){
             if(found){
@@ -75,7 +81,24 @@ public class Task4 implements Solvable{
         int step = 0;
         Vector<Integer> answerCombination = new Vector<>();
         findAllSubsets(arrayList, answerCombination, L, step);
-        System.out.println(answer);
+        if(answer.size() == 0){
+            System.out.println("\nневозможно");
+        }else {
+            int currNeededSum = L;
+            int currSum = 0;
+            System.out.print("\n[");
+            for (int i = 0; i < answer.size() - 1; i++) {
+                currSum += answer.get(i);
+                if (currSum == currNeededSum) {
+                    System.out.print(answer.get(i) + "], " + currNeededSum + ", [");
+                    currSum = 0;
+                    currNeededSum++;
+                } else {
+                    System.out.print(answer.get(i) + ", ");
+                }
+            }
+            System.out.print(answer.get(answer.size() - 1) + "], " + currNeededSum + "\n");
+        }
     }
 
 }
