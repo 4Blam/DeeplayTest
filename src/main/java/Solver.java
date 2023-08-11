@@ -1,6 +1,7 @@
 import blam.tasks.Task1;
 import blam.tasks.Task2;
 import blam.tasks.Task3;
+import blam.tasks.Task4;
 
 import java.util.Scanner;
 
@@ -75,6 +76,7 @@ public class Solver {
         System.out.println("\nКОНЕЦ РЕШЕНИЯ ЗАДАЧИ 3");
     }
     public static void demonstrateTask4(){
-
+        Task4 task4 = new Task4();
+        task4.solve();
     }
 }
