@@ -89,7 +89,8 @@ public class Solver {
         }
         System.out.println("Введите количество частей");
         int K = scanner.nextInt();
-
+        scanner.close();
+        
         Task4 task4 = new Task4(array, K);
         task4.solve();
         System.out.println("\nКОНЕЦ РЕШЕНИЯ ЗАДАЧИ 4\n");
